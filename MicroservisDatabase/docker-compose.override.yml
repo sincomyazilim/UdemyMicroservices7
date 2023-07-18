@@ -1,0 +1,52 @@
+version: "3.8"
+services:
+  catalogdb7:
+    container_name: catalogdb7
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - catalogdb7_volume:/data/db
+  basketdb7:
+    container_name: basketdb7
+    restart: always
+    ports:
+      - "6379:6379"
+  discountdb7:
+    container_name: discountdb7
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - discount7_volume:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=iS47????
+      - POSTGRES_DB=discountdb7
+  identitydb7:
+    container_name: identitydb7
+    restart: always
+    ports:
+      - "1433:1433"
+    volumes:
+      - identitydb7_volume:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=iS47????
+  orderdb7:
+    container_name: orderdb7
+    restart: always
+    ports:
+      - "1444:1433"
+    volumes:
+      - orderdb7_volume:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=iS47????
+  rabbitmq7:
+    container_name: rabbitmq7
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+ 

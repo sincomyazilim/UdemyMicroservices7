@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  catalogdb7:
+    image: mongo
+  basketdb7:
+    image: redis
+  discountdb7:
+    image: postgres
+  identitydb7:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  orderdb7:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  rabbitmq7:
+    image: rabbitmq:3.11.10-management
+ 
+  
+
+volumes:
+  catalogdb7_volume:
+  discount7_volume:
+  identitydb7_volume:
+  orderdb7_volume:
+
+
+ 

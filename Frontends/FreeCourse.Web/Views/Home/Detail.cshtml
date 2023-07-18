@@ -1,0 +1,51 @@
+﻿@using FreeCourse.Web.Models.Identit;
+@model GetCourseViewModel
+@{
+    ViewData["Title"] = "Detail";
+    List<UsersViewModel> users = TempData["userList"] as List<UsersViewModel>;
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="card">
+            <img src="@Model.StockPictureUrl" class="card-img-top" />
+            <div class="card-body">
+                <div class="badge bg-primary">Kategori : @Model.Category.Name</div>
+                
+                
+                    @foreach (var items in users)
+                    {
+                        @if (Model.UserId == items.Id)
+                        {
+                            <div class="badge bg-primary">Eğitmen : @items.UserName  </div>
+                        }
+
+                    }
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text"> @Model.Description</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Fiyat : @Model.Price TL</h4>
+                
+                <div class="d-grid">
+                    <a asp-controller="Basket" asp-action="AddBasketItem" asp-route-courseId="@Model.Id" class="btn btn-primary">Sepete ekle</a>
+                    <br />
+                    <a asp-controller="Basket22" asp-action="AddBasketItem" asp-route-courseId="@Model.Id" class="btn btn-primary">Sepete ekle 22</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
